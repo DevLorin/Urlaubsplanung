@@ -1,5 +1,10 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+html, body {
+  width: 100%;
+  max-width: 100%;
+}
+
 :root {
   --sea:      #0097c4;
   --sea-dark: #006fa0;
@@ -30,8 +35,7 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
-  overflow-x: hidden;
-  width: 100vw;
+  width: 100%;
   max-width: 100%;
 }
 
@@ -209,9 +213,6 @@ body {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
-
-.flight-grid .f-card:nth-child(4) { grid-column: 1 / span 1; }
-.flight-grid .f-card:nth-child(5) { grid-column: 2 / span 1; }
 
 .f-card {
   border: 2px solid var(--border);
@@ -808,7 +809,7 @@ footer {
   
   #app { padding: 1.5rem 1rem; }
   
-  .trip-grid { grid-template-columns: repeat(2, 1fr); }
+  .trip-grid { grid-template-columns: 1fr; width: 100%; max-width: 100%; }
   .trip-grid .t-card { padding: 0.95rem; }
   
   button[type="submit"] { width: 100%; }
@@ -824,10 +825,26 @@ footer {
 @media (max-width: 600px) {
   :root { --radius: 12px; }
   
-  .flight-grid { grid-template-columns: 1fr !important; width: 100%; max-width: 100%; }
-  .transfer-grid { grid-template-columns: 1fr !important; width: 100%; max-width: 100%; }
-  .f-card { width: 100%; max-width: 100%; min-width: 0; }
-  .tr-card { width: 100%; max-width: 100%; min-width: 0; }
+  .flight-grid,
+  .transfer-grid,
+  .trip-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .f-card,
+  .tr-card,
+  .t-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+  }
   
   .hero { 
     padding: 2.5rem 1rem 3.5rem;
