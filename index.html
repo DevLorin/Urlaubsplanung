@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amalfi Coast · September 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">✈ Zürich → Neapel · Direktflug · 1h 45min</p>
+      <h1>Amalfi <em>Coast</em></h1>
+      <p class="hero-sub">Lorin &amp; Djellza ♡ · So. 6. — Sa. 12. September 2025 · 6 Nächte</p>
+    </div>
+  </header>
+
+  <div class="highlights">
+    <div class="hl sea">
+      <span class="hl-icon">🌊</span>
+      <span class="hl-title">Tyrrhenisches Meer</span>
+      <span class="hl-desc">23 °C Wassertemp. im Sept.</span>
+    </div>
+    <div class="hl green">
+      <span class="hl-icon">🌿</span>
+      <span class="hl-title">Olivenhaine &amp; Pinienwälder</span>
+      <span class="hl-desc">UNESCO-Küste, steil &amp; grün</span>
+    </div>
+    <div class="hl lemon">
+      <span class="hl-icon">🍋</span>
+      <span class="hl-title">Zitronen &amp; Limoncello</span>
+      <span class="hl-desc">Amalfi = die Zitronenküste</span>
+    </div>
+    <div class="hl terra">
+      <span class="hl-icon">🏘</span>
+      <span class="hl-title">Positano · Ravello · Capri</span>
+      <span class="hl-desc">Alles erreichbar vom Zentrum</span>
+    </div>
+  </div>
+
+  <div id="app">
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Flugoptionen</h2>
+        <span class="card-meta">Skyscanner · So. 6. – Sa. 12. Sept · Preise p.P. inkl. Steuern · Top 6 Direktflüge</span>
+      </div>
+      <div id="flight-grid" class="flight-grid"></div>
+      <p class="footnote">Mit 1 Zwischenstopp: ab CHF 127 p.P. (ITA Airways, ~15h Reisezeit) — nicht empfohlen. · Ankunft vor Mittag bevorzugt wegen Transfer ZRH → Amalfi (~1.5h).</p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Transfer: NAP Flughafen → Amalfi</h2>
+        <span class="card-meta">64 km · ~1h 18 – 2h · GetYourGuide / GetTransfer / Pintour</span>
+      </div>
+      <div id="transfer-grid" class="transfer-grid"></div>
+      <p class="footnote">Alle Preise pro Fahrt für 2 Personen. Fähre benötigt Zwischenschritt: Flughafen → Hafen Beverello (~14 CHF Taxi/Shuttle). · Hin- und Rückfahrt separat buchen.</p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Budget</h2>
+        <span class="card-meta" id="budget-label">Flug wählen ↑</span>
+      </div>
+      <div class="budget-table">
+        <div class="b-row"><span>Flüge (2 Pers.)</span><span id="b-flights" class="b-val muted">—</span></div>
+        <div class="b-row"><span>Hotel (7 Nächte)</span>
+          <div class="b-right"><input type="number" id="b-hotel" placeholder="CHF/Nacht" class="b-input" /><span id="b-hotel-sub" class="b-sub"></span></div>
+        </div>
+        <div class="b-row"><span>Transfer Hin+Zurück (2 Pers.)</span><span id="b-transfer-val" class="b-val muted">—</span></div>
+        <div class="b-row"><span>Ausgaben vor Ort</span><input type="number" id="b-misc" placeholder="CHF" class="b-input" /></div>
+        <div class="b-row total"><span>Gesamt (2 Personen)</span><span id="b-total" class="b-val">—</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>Notizen &amp; Wunschliste</h2></div>
+      <textarea id="trip-notes" placeholder="Was darf nicht fehlen?&#10;&#10;— Bootsausflug Grotta dello Smeraldo&#10;— Abendbrot mit Meeresblick in Positano&#10;— Cetara: der Fischerort, noch unbekannt&#10;— Limoncello kaufen!"></textarea>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Weitere Reisen</h2>
+      </div>
+      <form id="trip-form">
+        <div class="form-row">
+          <input type="text" id="destination" placeholder="Destination" required />
+          <input type="date" id="date-from" required />
+          <input type="date" id="date-to" required />
+        </div>
+        <div class="form-row">
+          <input type="number" id="trip-budget" placeholder="Budget (CHF)" min="0" />
+          <input type="text" id="trip-notes-field" placeholder="Notizen…" />
+          <button type="submit">+ Hinzufügen</button>
+        </div>
+      </form>
+      <div id="trip-list" class="trip-grid"></div>
+      <p id="empty-state" class="empty-hint">Noch keine weiteren Reisen.</p>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>Erstellt mit ❤ für unseren Urlaub · 2025</p>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
