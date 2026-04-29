@@ -30,6 +30,9 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+  overflow-x: hidden;
+  width: 100vw;
+  max-width: 100%;
 }
 
 /* ── HERO ── */
@@ -43,10 +46,12 @@ body {
       #a8e8d0 95%,
       #f0ead8 100%
     );
-  padding: 5rem 2rem 5.5rem;
+  padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 4vw, 2rem) clamp(2rem, 5vw, 5.5rem);
   text-align: center;
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 .hero::after {
@@ -100,17 +105,20 @@ body {
 /* ── HIGHLIGHTS STRIP ── */
 .highlights {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   background: var(--white);
   border-bottom: 1px solid var(--border);
+  overflow-x: hidden;
 }
 
 .hl {
-  padding: 1.4rem 1.2rem;
+  padding: clamp(1rem, 3vw, 1.4rem) clamp(0.8rem, 3vw, 1.2rem);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  min-width: 0;
+  overflow-x: hidden;
 }
 
 .hl:last-child { border-right: none; }
@@ -140,12 +148,21 @@ body {
 
 /* ── LAYOUT ── */
 #app {
-  max-width: 1080px;
+  max-width: 100%;
+  width: 100%;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: clamp(1rem, 4vw, 2rem) clamp(0.75rem, 3vw, 1.5rem);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1080px) {
+  #app {
+    max-width: 1080px;
+  }
 }
 
 /* ── CARD ── */
@@ -181,9 +198,16 @@ body {
 /* ── FLIGHT GRID ── */
 .flight-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 1rem;
   margin-bottom: 1rem;
+  overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  .flight-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .flight-grid .f-card:nth-child(4) { grid-column: 1 / span 1; }
@@ -388,9 +412,16 @@ body {
 /* ── TRANSFER GRID ── */
 .transfer-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
   gap: 1rem;
   margin-bottom: 1rem;
+  overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  .transfer-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
 }
 
 
