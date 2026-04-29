@@ -742,13 +742,340 @@ footer {
 }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 700px) {
-  .highlights { grid-template-columns: 1fr 1fr; }
-  .hl { border-right: none; border-bottom: 1px solid var(--border); }
-  .flight-grid { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
+
+/* Tablet: 701px - 1024px */
+@media (max-width: 1024px) {
+  #app { max-width: 100%; }
+  .flight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .transfer-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 420px) {
+/* Large Phone: 600px - 700px */
+@media (max-width: 700px) {
+  .highlights { grid-template-columns: 1fr 1fr; }
+  .hl { 
+    border-right: none; 
+    border-bottom: 1px solid var(--border);
+    padding: 1.2rem 1rem;
+  }
+  .flight-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .transfer-grid { grid-template-columns: 1fr; }
+  
+  .card { padding: 1.5rem 1.2rem; }
+  .card-head { flex-direction: column; gap: 0.5rem; }
+  .card-head h2 { font-size: 1.2rem; }
+  .card-meta { font-size: 0.72rem; }
+  
+  #app { padding: 1.5rem 1rem; }
+  
+  .trip-grid { grid-template-columns: repeat(2, 1fr); }
+  .trip-grid .t-card { padding: 0.95rem; }
+  
+  button[type="submit"] { width: 100%; }
+  .b-input { width: 90px; }
+  
+  .hero { padding: 3.5rem 1.5rem 4rem; }
+  .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); }
+  
+  footer { padding: 2rem 1rem; font-size: 0.75rem; }
+}
+
+/* Small Phone (iPhone 15): 390px - 600px */
+@media (max-width: 600px) {
+  :root { --radius: 12px; }
+  
+  .hero { 
+    padding: 2.5rem 1rem 3.5rem;
+    text-align: center;
+  }
+  
+  .hero::after { font-size: clamp(3rem, 15vw, 8rem); }
+  
+  .hero-eyebrow { 
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+  
+  .hero h1 { 
+    font-size: clamp(2rem, 7.5vw, 3.5rem);
+    margin-bottom: 0.75rem;
+    text-shadow: 0 1px 20px rgba(0,80,120,0.3);
+  }
+  
+  .hero-sub { 
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
   .highlights { grid-template-columns: 1fr; }
+  .hl { 
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    border-top: 2px solid !important;
+    padding: 1rem 0.85rem;
+  }
+  
+  .hl-icon { font-size: 1.3rem; }
+  .hl-title { font-size: 0.75rem; }
+  .hl-desc { font-size: 0.68rem; }
+  
+  #app { 
+    padding: 1.25rem 0.75rem;
+    gap: 1rem;
+  }
+  
+  .card { 
+    padding: 1.25rem 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  
+  .card-head { 
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .card-head h2 { 
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  
+  .card-meta { 
+    font-size: 0.65rem;
+    line-height: 1.3;
+  }
+  
+  .flight-grid { 
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    margin-bottom: 0.85rem;
+  }
+  
+  .f-card {
+    padding: 1rem;
+    border-radius: 10px;
+    gap: 0.5rem;
+  }
+  
+  .f-card-top { margin-bottom: 0.7rem; }
+  
+  .f-badge { 
+    font-size: 0.58rem;
+    padding: 0.15rem 0.45rem;
+  }
+  
+  .f-leg { 
+    font-size: 0.75rem;
+    gap: 0.5rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .f-leg .route { font-size: 0.85rem; }
+  
+  .f-leg .info { font-size: 0.65rem; }
+  .f-leg .airline { font-size: 0.65rem; }
+  
+  .f-price .amount { font-size: 1.35rem; }
+  .f-price .chf { font-size: 0.65rem; }
+  .f-price .pp { font-size: 0.65rem; }
+  .f-price .total-pp { font-size: 0.65rem; }
+  
+  .f-select {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    min-height: 34px;
+  }
+  
+  .footnote {
+    font-size: 0.7rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+  }
+  
+  .transfer-grid { 
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    margin-bottom: 0.85rem;
+  }
+  
+  .tr-card {
+    padding: 1rem;
+    border-radius: 10px;
+    gap: 0.5rem;
+  }
+  
+  .tr-top { gap: 0.6rem; }
+  .tr-icon { font-size: 1.3rem; }
+  .tr-name { font-size: 0.9rem; }
+  .tr-badge { font-size: 0.55rem; padding: 0.12rem 0.4rem; }
+  .tr-route { font-size: 0.72rem; }
+  .tr-duration { font-size: 0.72rem; }
+  
+  .tr-prices { gap: 0.5rem; }
+  .tr-price-item { padding: 0.35rem 0.5rem; }
+  .tr-plabel { font-size: 0.6rem; margin-bottom: 1px; }
+  .tr-pval { font-size: 0.82rem; }
+  
+  .tr-combo-leg { 
+    padding: 0.4rem 0.55rem;
+    gap: 0.4rem;
+  }
+  .tr-combo-icon { font-size: 0.9rem; }
+  .tr-combo-label { font-size: 0.58rem; }
+  .tr-combo-detail { font-size: 0.7rem; }
+  
+  .tr-times-label { font-size: 0.62rem; }
+  .tr-times-chips span { 
+    padding: 0.15rem 0.4rem;
+    font-size: 0.68rem;
+  }
+  
+  .tr-pro { font-size: 0.68rem; }
+  .tr-con { font-size: 0.68rem; }
+  
+  .tr-select {
+    font-size: 0.68rem;
+    padding: 0.32rem 0.7rem;
+    min-height: 32px;
+  }
+  
+  .tr-footer {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  
+  .tr-platform { font-size: 0.65rem; }
+  
+  /* Budget section */
+  .budget-table { gap: 0.4rem; }
+  
+  .b-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.78rem;
+    border-radius: 6px;
+  }
+  
+  .b-row.total {
+    font-size: 0.88rem;
+  }
+  
+  .b-right {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.3rem;
+  }
+  
+  .b-input {
+    width: 70px;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.55rem;
+    border-radius: 6px;
+    min-height: 32px;
+  }
+  
+  /* Forms */
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+    margin-bottom: 0.55rem;
+  }
+  
+  input[type="text"], 
+  input[type="number"], 
+  input[type="date"] {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    min-height: 40px;
+  }
+  
+  button[type="submit"] {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    width: 100%;
+    min-height: 40px;
+  }
+  
+  /* Text area */
+  #trip-notes {
+    font-size: 0.8rem;
+    padding: 0.85rem;
+    min-height: 120px;
+    border-radius: 6px;
+  }
+  
+  /* Trip Cards */
+  .trip-grid { 
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-top: 0.85rem;
+  }
+  
+  .t-card {
+    padding: 0.9rem;
+    border-radius: 8px;
+  }
+  
+  .t-dest { font-size: 0.95rem; margin-bottom: 0.25rem; }
+  .t-dates { font-size: 0.7rem; }
+  .t-nights { font-size: 0.68rem; margin-top: 0.15rem; }
+  .t-budget { font-size: 0.7rem; margin-top: 0.3rem; }
+  .t-notes { font-size: 0.68rem; padding-top: 0.4rem; margin-top: 0.4rem; }
+  
+  .del-btn {
+    font-size: 0.7rem;
+    padding: 2px 4px;
+  }
+  
+  footer { 
+    padding: 1.5rem 0.75rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Extra Small Phone (iPhone SE): 375px and below */
+@media (max-width: 375px) {
+  .hero { 
+    padding: 2rem 0.75rem 3rem;
+  }
+  
+  .hero-eyebrow { font-size: 0.65rem; }
+  
+  .hero h1 { 
+    font-size: clamp(1.75rem, 6.5vw, 3rem);
+    margin-bottom: 0.6rem;
+  }
+  
+  .hero-sub { font-size: 0.8rem; }
+  
+  .highlights { gap: 0; }
+  .hl { padding: 0.9rem 0.75rem; }
+  
+  #app { padding: 1rem 0.6rem; }
+  
+  .card { padding: 1rem 0.9rem; }
+  .card-head h2 { font-size: 1rem; }
+  
+  .f-card { padding: 0.9rem; }
+  .f-price .amount { font-size: 1.25rem; }
+  
+  .transfer-grid { gap: 0.75rem; }
+  .tr-card { padding: 0.9rem; }
+  
+  input[type="text"], 
+  input[type="number"], 
+  input[type="date"] {
+    font-size: 0.78rem;
+  }
+  
+  button[type="submit"] { font-size: 0.78rem; }
 }
