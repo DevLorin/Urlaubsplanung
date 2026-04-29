@@ -224,6 +224,9 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .f-card:hover {
@@ -436,6 +439,8 @@ body {
   gap: 0.55rem;
   overflow: hidden;
   min-width: 0;
+  width: 100%;
+  max-width: 100%;
   transition: border-color .2s, box-shadow .2s, transform .15s;
 }
 
@@ -785,8 +790,6 @@ footer {
 /* Tablet: 701px - 1024px */
 @media (max-width: 1024px) {
   #app { max-width: 100%; }
-  .flight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .transfer-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* Large Phone: 600px - 700px */
@@ -797,7 +800,8 @@ footer {
     border-bottom: 1px solid var(--border);
     padding: 1.2rem 1rem;
   }
-  .transfer-grid { grid-template-columns: repeat(2, 1fr); }
+  .flight-grid { grid-template-columns: 1fr !important; }
+  .transfer-grid { grid-template-columns: 1fr !important; }
   
   .card { padding: 1.5rem 1.2rem; }
   .card-head { flex-direction: column; gap: 0.5rem; }
@@ -821,6 +825,11 @@ footer {
 /* Small Phone (iPhone 15): 390px - 600px */
 @media (max-width: 600px) {
   :root { --radius: 12px; }
+  
+  .flight-grid { grid-template-columns: 1fr !important; width: 100%; max-width: 100%; }
+  .transfer-grid { grid-template-columns: 1fr !important; width: 100%; max-width: 100%; }
+  .f-card { width: 100%; max-width: 100%; min-width: 0; }
+  .tr-card { width: 100%; max-width: 100%; min-width: 0; }
   
   .hero { 
     padding: 2.5rem 1rem 3.5rem;
