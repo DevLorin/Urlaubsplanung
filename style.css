@@ -1,10 +1,5 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body {
-  width: 100%;
-  max-width: 100%;
-}
-
 :root {
   --sea:      #0097c4;
   --sea-dark: #006fa0;
@@ -35,8 +30,6 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
-  width: 100%;
-  max-width: 100%;
 }
 
 /* ── HERO ── */
@@ -50,12 +43,10 @@ body {
       #a8e8d0 95%,
       #f0ead8 100%
     );
-  padding: clamp(2rem, 5vw, 5rem) clamp(1rem, 4vw, 2rem) clamp(2rem, 5vw, 5.5rem);
+  padding: 5rem 2rem 5.5rem;
   text-align: center;
   position: relative;
   overflow: hidden;
-  width: 100%;
-  max-width: 100%;
 }
 
 .hero::after {
@@ -109,20 +100,17 @@ body {
 /* ── HIGHLIGHTS STRIP ── */
 .highlights {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   background: var(--white);
   border-bottom: 1px solid var(--border);
-  overflow-x: hidden;
 }
 
 .hl {
-  padding: clamp(1rem, 3vw, 1.4rem) clamp(0.8rem, 3vw, 1.2rem);
+  padding: 1.4rem 1.2rem;
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  min-width: 0;
-  overflow-x: hidden;
 }
 
 .hl:last-child { border-right: none; }
@@ -152,21 +140,12 @@ body {
 
 /* ── LAYOUT ── */
 #app {
-  max-width: 100%;
-  width: 100%;
+  max-width: 1080px;
   margin: 0 auto;
-  padding: clamp(1rem, 4vw, 2rem) clamp(0.75rem, 3vw, 1.5rem);
+  padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  overflow-x: hidden;
-  box-sizing: border-box;
-}
-
-@media (min-width: 1080px) {
-  #app {
-    max-width: 1080px;
-  }
 }
 
 /* ── CARD ── */
@@ -202,17 +181,13 @@ body {
 /* ── FLIGHT GRID ── */
 .flight-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   margin-bottom: 1rem;
-  overflow-x: hidden;
 }
 
-@media (min-width: 768px) {
-  .flight-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
+.flight-grid .f-card:nth-child(4) { grid-column: 1 / span 1; }
+.flight-grid .f-card:nth-child(5) { grid-column: 2 / span 1; }
 
 .f-card {
   border: 2px solid var(--border);
@@ -225,9 +200,6 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  min-width: 0;
-  max-width: 100%;
 }
 
 .f-card:hover {
@@ -416,16 +388,9 @@ body {
 /* ── TRANSFER GRID ── */
 .transfer-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1rem;
   margin-bottom: 1rem;
-  overflow-x: hidden;
-}
-
-@media (min-width: 768px) {
-  .transfer-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  }
 }
 
 
@@ -440,8 +405,6 @@ body {
   gap: 0.55rem;
   overflow: hidden;
   min-width: 0;
-  width: 100%;
-  max-width: 100%;
   transition: border-color .2s, box-shadow .2s, transform .15s;
 }
 
@@ -631,7 +594,9 @@ body {
 }
 
 @media (max-width: 700px) {
-  .transfer-grid { grid-template-columns: 1fr; }
+  .transfer-grid { grid-template-columns: 1fr 1fr; }
+  .transfer-grid .tr-card:nth-child(4),
+  .transfer-grid .tr-card:nth-child(5) { grid-column: auto; }
 }
 
 /* ── BUDGET ── */
@@ -789,6 +754,8 @@ footer {
 /* Tablet: 701px - 1024px */
 @media (max-width: 1024px) {
   #app { max-width: 100%; }
+  .flight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .transfer-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* Large Phone: 600px - 700px */
@@ -799,8 +766,7 @@ footer {
     border-bottom: 1px solid var(--border);
     padding: 1.2rem 1rem;
   }
-  .flight-grid { grid-template-columns: 1fr !important; }
-  .transfer-grid { grid-template-columns: 1fr !important; }
+  .transfer-grid { grid-template-columns: repeat(2, 1fr); }
   
   .card { padding: 1.5rem 1.2rem; }
   .card-head { flex-direction: column; gap: 0.5rem; }
@@ -809,7 +775,7 @@ footer {
   
   #app { padding: 1.5rem 1rem; }
   
-  .trip-grid { grid-template-columns: 1fr; width: 100%; max-width: 100%; }
+  .trip-grid { grid-template-columns: repeat(2, 1fr); }
   .trip-grid .t-card { padding: 0.95rem; }
   
   button[type="submit"] { width: 100%; }
@@ -824,27 +790,6 @@ footer {
 /* Small Phone (iPhone 15): 390px - 600px */
 @media (max-width: 600px) {
   :root { --radius: 12px; }
-  
-  .flight-grid,
-  .transfer-grid,
-  .trip-grid {
-    grid-template-columns: 1fr !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  .f-card,
-  .tr-card,
-  .t-card {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    position: relative !important;
-    left: auto !important;
-    right: auto !important;
-    transform: none !important;
-  }
   
   .hero { 
     padding: 2.5rem 1rem 3.5rem;
